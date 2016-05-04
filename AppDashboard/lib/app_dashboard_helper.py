@@ -347,6 +347,7 @@ class AppDashboardHelper(object):
       AppHelperException: If the application was not uploaded successfully.
     """
     user = users.get_current_user()
+    failure_message = ""
     if not user:
       raise AppHelperException("There was an error uploading your " \
         "application. You must be logged in to upload applications.")
@@ -359,10 +360,10 @@ class AppDashboardHelper(object):
       tgz_file.close()
       upload_info = acc.upload_app(tgz_file.name, file_suffix, user.email())
       status = upload_info['status']
-
       while status == AppUploadStatuses.STARTING:
         time.sleep(self.APP_UPLOAD_CHECK_INTERVAL)
         status = acc.get_app_upload_status(upload_info['reservation_id'])
+        failure_message += status;
         if status == AppUploadStatuses.ID_NOT_FOUND:
           os.remove('{}.{}'.format(tgz_file.name, file_suffix))
           raise AppHelperException('We could not find the reservation ID '
@@ -384,11 +385,11 @@ class AppDashboardHelper(object):
       # characters that termcolor emits as the error.
       match_data = re.search("\[31m(.*)\x1b", str(err))
       if match_data:
-        failure_message = match_data.group(1)
+        failure_message += match_data.group(1)
       else:
         # Fall back to whatever the exception was if it wasn't in the expected
         # format.
-        failure_message = str(err)
+        failure_message += "\n" + str(err)
       raise AppHelperException("There was an error uploading your application: "
         "{0}".format(failure_message))
 
