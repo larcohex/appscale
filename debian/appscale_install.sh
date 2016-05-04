@@ -52,7 +52,7 @@ case "$1" in
         postinstallmonit
         sethosts
         setulimits
-        increaseconnections
+#        increaseconnections
         installVersion
         installrequests
         postinstallrsyslog
