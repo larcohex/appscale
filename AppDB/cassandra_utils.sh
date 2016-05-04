@@ -6,7 +6,7 @@
 # Author: graziano
 
 # Cassandra nodetool.
-CMD="/root/appscale/AppDB/cassandra/cassandra/bin/nodetool"
+CMD="/var/lib/appscale/AppDB/cassandra/cassandra/bin/nodetool"
 
 # The keyspace to work on.
 KEYSPACE="Keyspace1"
@@ -43,7 +43,7 @@ if ! am_i_login_node ; then
 fi
 
 # Check for other running instances of this script.
-output=$(ps aux | grep "/bin/sh -c bash /root/appscale/AppDB/cassandra_utils.sh" |  grep -v grep | wc -l)
+output=$(ps aux | grep "/bin/sh -c bash /var/lib/appscale/AppDB/cassandra_utils.sh" |  grep -v grep | wc -l)
 if [ "$output" -gt "1" ]; then
         echo -e "\nAnother instance is already running. Exiting..."
         exit 1

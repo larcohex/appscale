@@ -266,7 +266,7 @@ def _ResolvePath(included_from, included_path, basepath):
   """
 
   python_lib = "$PYTHON_LIB"
-  appscale_server = "/root/appscale/AppServer"
+  appscale_server = "/var/lib/appscale/AppServer"
   included_from = included_from.replace(python_lib, appscale_server)
   included_path = included_path.replace(python_lib, appscale_server)
   basepath = basepath.replace(python_lib, appscale_server)

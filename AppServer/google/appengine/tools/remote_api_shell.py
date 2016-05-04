@@ -40,7 +40,7 @@ except ImportError:
 
 
 # Location of the AppScale python application server. 
-SDK_DIR = "/root/appscale/AppServer"
+SDK_DIR = "/var/lib/appscale/AppServer"
 
 EXTRA_PATHS = [
   SDK_DIR,

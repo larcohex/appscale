@@ -3,7 +3,7 @@ import unittest
 import subprocess
 from migration import * 
 from dbconstants import *
-TEST_TAR = '/root/appscale/AppDB/test/migration_data.tar.gz'
+TEST_TAR = '/var/lib/appscale/AppDB/test/migration_data.tar.gz'
 
 class SecretTestCase(unittest.TestCase):
   def setUp(self):
@@ -55,8 +55,8 @@ class TarTestCase(unittest.TestCase):
     self.assertEquals(untar_file(self.tarname), self.file_list)
 
   def tearDown(self):
-    remove_tar('/root/appscale/AppDB/migration_data/LICENSE')
-    remove_tar('/root/appscale/AppDB/'+self.tarname)
+    remove_tar('/var/lib/appscale/AppDB/migration_data/LICENSE')
+    remove_tar('/var/lib/appscale/AppDB/'+self.tarname)
 
 class TestDataCase(unittest.TestCase):
   def runTest(self):

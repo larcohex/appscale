@@ -4,7 +4,7 @@ This file contains constants used throughout AppScale.
 import os
 
 # AppScale home directory.
-APPSCALE_HOME = os.environ.get("APPSCALE_HOME", "/root/appscale")
+APPSCALE_HOME = os.environ.get("APPSCALE_HOME", "/var/lib/appscale")
 
 # Location of PID files for processes and applications.
 APP_PID_DIR = '/etc/appscale/'

@@ -62,9 +62,9 @@ module Search
   def self.start_solr()
     Djinn.log_debug("Starting SOLR.")
     Djinn.log_run("mkdir -p #{SOLR_STATE_DIR}")
-    Djinn.log_run("cp -r /root/appscale/SearchService/templates/schemaless-appscale /opt/appscale/solr/")
-    start_cmd = "/root/appscale/SearchService/solr/solr/bin/solr start -noprompt -s /opt/appscale/solr/schemaless-appscale/solr/"
-    stop_cmd = "/root/appscale/SearchService/solr/solr/bin/solr stop -all"
+    Djinn.log_run("cp -r /var/lib/appscale/SearchService/templates/schemaless-appscale /opt/appscale/solr/")
+    start_cmd = "/var/lib/appscale/SearchService/solr/solr/bin/solr start -noprompt -s /opt/appscale/solr/schemaless-appscale/solr/"
+    stop_cmd = "/var/lib/appscale/SearchService/solr/solr/bin/solr stop -all"
     MonitInterface.start(:solr, start_cmd, stop_cmd, ports=SOLR_SERVER_PORT,
       env_vars=nil, match_cmd="solr")
     HelperFunctions.sleep_until_port_is_open("localhost", SOLR_SERVER_PORT)

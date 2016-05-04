@@ -40,7 +40,7 @@ class ErrorApp
 
   # This function places a generic java error application.
   def generate_java()
-    Djinn.log_run("cp -r /root/appscale/AppServer_Java/error_app/* #{@dir_path}")
+    Djinn.log_run("cp -r /var/lib/appscale/AppServer_Java/error_app/* #{@dir_path}")
     app_xml =<<CONFIG
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">

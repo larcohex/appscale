@@ -39,7 +39,7 @@ from google.appengine.tools.devappserver2 import shutdown
 from google.appengine.tools.devappserver2 import update_checker
 from google.appengine.tools.devappserver2 import wsgi_request_info
 
-sys.path.append("/root/appscale/lib")
+sys.path.append("/var/lib/appscale/lib")
 import appscale_info
 
 # Initialize logging early -- otherwise some library packages may

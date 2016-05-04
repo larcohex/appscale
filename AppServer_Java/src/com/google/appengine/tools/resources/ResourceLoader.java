@@ -7,7 +7,7 @@ public class ResourceLoader
     private static ResourceLoader res                       = null;
     private final int             PROTOCOL_BUFFER_PORT      = 8888;
     private final String          DB_LOCATION_PROPERTY      = "DB_LOCATION";
-    private static String         apphome                   = "/root/appscale";
+    private static String         apphome                   = "/var/lib/appscale";
     private String                DEFAULT_KEY_STORE_PATH    = "/AppServer_Java/keystore.ImportKey";
     private String                DEFAULT_KEYSTORE_PASSWORD = "importkey";
     private final static String   APPSCALE_HOME_PROPERTY    = "APPSCALE_HOME";

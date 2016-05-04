@@ -356,7 +356,7 @@ CONFIG
     
 server {
     listen #{DatastoreServer::LISTEN_PORT_NO_SSL};
-    root /root/appscale/AppDB/;
+    root /var/lib/appscale/AppDB/;
     # Uncomment these lines to enable logging, and comment out the following two
     #access_log  /var/log/nginx/datastore_server.access.log upstream;
     #error_log  /var/log/nginx/datastore_server.error.log;
@@ -395,7 +395,7 @@ server {
     error_page 400 https://$host:$server_port$request_uri;
     error_page 497 https://$host:$server_port$request_uri;
 
-    root /root/appscale/AppDB/public;
+    root /var/lib/appscale/AppDB/public;
     #access_log  /var/log/nginx/datastore_server_encrypt.access.log upstream;
     #error_log  /var/log/nginx/datastore_server_encrypt.error.log;
     access_log off;
@@ -453,7 +453,7 @@ server {
     error_page 400 https://$host:$server_port$request_uri;
     error_page 497 https://$host:$server_port$request_uri;
 
-    root /root/appscale/AppDB/public;
+    root /var/lib/appscale/AppDB/public;
     #access_log  /var/log/nginx/datastore_server_encrypt.access.log upstream;
     #error_log  /var/log/nginx/datastore_server_encrypt.error.log;
     access_log off;

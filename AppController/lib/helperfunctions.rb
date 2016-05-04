@@ -383,7 +383,7 @@ module HelperFunctions
     remote_cmd = "ssh -i #{key} -o NumberOfPasswordPrompts=0 -o StrictHostkeyChecking=no 2>&1 root@#{ip} '#{cat}'"
     possible_home = self.shell("#{remote_cmd}").chomp
     if possible_home.nil? or possible_home.empty?
-      return "/root/appscale/"
+      return "/var/lib/appscale/"
     else
       return possible_home
     end

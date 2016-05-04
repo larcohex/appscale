@@ -222,7 +222,7 @@ public final class LocalChannelService extends AbstractLocalRpcService
       String result = null;
       try
       {
-          Process p = r.exec("python /root/appscale/AppServer_Java/src/com/google/appengine/api/channel/dev/soap_helper.py " + clientId + " " + password + " " + secret + " " + url); 
+          Process p = r.exec("python /var/lib/appscale/AppServer_Java/src/com/google/appengine/api/channel/dev/soap_helper.py " + clientId + " " + password + " " + secret + " " + url);
           inStream = p.getInputStream();
           buf = new BufferedInputStream(inStream);
           inStreamReader = new InputStreamReader(buf);

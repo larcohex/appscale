@@ -347,10 +347,10 @@ public class LocalMapReduceService implements LocalRpcService {
 //
 //		String realFilePathInHd = "/tmp/" + inputLoc;
 //
-//		String removeInput = "/root/appscale/AppDB/hadoop-0.20.0/bin/hadoop fs -rmr "
+//		String removeInput = "/var/lib/appscale/AppDB/hadoop-0.20.0/bin/hadoop fs -rmr "
 //				+ realFilePathInHd;
 //		String removeInputCmd[] = new String[4];
-//		removeInputCmd[0] = "/root/appscale/AppDB/hadoop-0.20.0/bin/hadoop";
+//		removeInputCmd[0] = "/var/lib/appscale/AppDB/hadoop-0.20.0/bin/hadoop";
 //		removeInputCmd[1] = "fs";
 //		removeInputCmd[2] = "-rmr";
 //		removeInputCmd[3] = realFilePathInHd;
@@ -364,12 +364,12 @@ public class LocalMapReduceService implements LocalRpcService {
 //
 //		}
 //
-//		String put = "/root/appscale/AppDB/hadoop-0.20.0/bin/hadoop fs -put "
+//		String put = "/var/lib/appscale/AppDB/hadoop-0.20.0/bin/hadoop fs -put "
 //				+ realFilePath + " " + realFilePathInHd;
 //		System.out.println("put input in hadoop");
 //		System.out.println(put);
 //		String putCmd[] = new String[5];
-//		putCmd[0] = "/root/appscale/AppDB/hadoop-0.20.0/bin/hadoop";
+//		putCmd[0] = "/var/lib/appscale/AppDB/hadoop-0.20.0/bin/hadoop";
 //		putCmd[1] = "fs";
 //		putCmd[2] = "-put";
 //		putCmd[3] = realFilePath;

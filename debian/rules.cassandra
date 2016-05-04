@@ -43,7 +43,7 @@ clean:
 	dh_clean 
 
 #DESTDIR = $(CURDIR)/debian/appscale-cassandra
-#APPSCALE = $(DESTDIR)/root/appscale
+#APPSCALE = $(DESTDIR)/var/lib/appscale
 install: build
 	dh_testdir
 	dh_testroot

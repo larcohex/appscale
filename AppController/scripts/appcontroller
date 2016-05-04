@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 DESC="AppScale Controller"
-DIR=/root/appscale/AppController
+DIR=/var/lib/appscale/AppController
 DAEMON=$DIR/djinnServer.rb
 DAEMON_NAME=appscale-controller
 DAEMON_USER=root

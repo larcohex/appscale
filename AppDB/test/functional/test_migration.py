@@ -5,8 +5,8 @@ import SOAPpy
 import yaml
 from dbconstants import *
 
-TEST_TAR = '/root/appscale/AppDB/test/migration_data.tar.gz'
-DATABASE_YAML = '/root/appscale/.appscale/database_info.yaml'
+TEST_TAR = '/var/lib/appscale/AppDB/test/migration_data.tar.gz'
+DATABASE_YAML = '/var/lib/appscale/.appscale/database_info.yaml'
 
 # Requires AppScale running
 class IntegrationDirect(unittest.TestCase):

@@ -72,7 +72,7 @@ end
 namespace :go do
 
   task :test do
-    goroot = '/root/appscale/AppServer/goroot'
+    goroot = '/var/lib/appscale/AppServer/goroot'
     sh "PATH=#{goroot}/bin:${PATH}; cd #{goroot}/src; ./run.bash --no-rebuild"
   end
 
