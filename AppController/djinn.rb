@@ -1766,10 +1766,10 @@ class Djinn
         end
         Djinn.log_debug("Set apps to restart at #{ip} returned #{result} as class #{result.class}")
       }
+    end
 
-      if my_node.is_login?
-        regenerate_nginx_config_files()
-      end
+    if my_node.is_login?
+      regenerate_nginx_config_files()
     end
 
     Djinn.log_debug("Done updating apps!")
@@ -4540,14 +4540,14 @@ HOSTS
   def set_appcontroller_monit()
     Djinn.log_debug("Configuring AppController monit.")
     env = {
-      'HOME' => '/var/lib',
+      'HOME' => '/root',
       'APPSCALE_HOME' => APPSCALE_HOME,
       'EC2_HOME' => ENV['EC2_HOME'],
       'JAVA_HOME' => ENV['JAVA_HOME']
     }
-    start = "/usr/bin/ruby -w /var/lib/appscale/AppController/djinnServer.rb"
+    start = "/usr/bin/ruby -w /root/appscale/AppController/djinnServer.rb"
     stop = "/usr/sbin/service appscale-controller stop"
-    match_cmd = "/usr/bin/ruby -w /var/lib/appscale/AppController/djinnServer.rb"
+    match_cmd = "/usr/bin/ruby -w /root/appscale/AppController/djinnServer.rb"
 
     # Let's make sure we don't have 2 jobs monitoring the controller.
     FileUtils.rm_rf("/etc/monit/conf.d/controller-17443.cfg")
