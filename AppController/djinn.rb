@@ -49,7 +49,7 @@ require 'zkinterface'
 NO_OUTPUT = false
 
 # Path to the appscale-tools installation.
-APPSCALE_TOOLS_HOME = "/usr/local/appscale-tools/"
+APPSCALE_TOOLS_HOME = "/var/lib/appscale-tools"
 
 # This lock makes it so that global variables related to apps are not updated
 # concurrently, preventing race conditions.
