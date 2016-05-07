@@ -45,6 +45,7 @@ require 'taskqueue_client'
 require 'terminate'
 require 'user_app_client'
 require 'zkinterface'
+require "zookeeper_helper"
 
 NO_OUTPUT = false
 
@@ -55,9 +56,6 @@ APPSCALE_TOOLS_HOME = "/var/lib/appscale-tools"
 # concurrently, preventing race conditions.
 APPS_LOCK = Monitor.new()
 
-
-$:.unshift File.join(File.dirname(__FILE__), "..", "AppDB", "zkappscale")
-require "zookeeper_helper"
 
 # A HTTP client that assumes that responses returned are JSON, and automatically
 # loads them, returning the result. Raises a NoMethodError if the host/URL is
@@ -3769,7 +3767,7 @@ class Djinn
   #     after ten retries.
   def prime_database()
     table = @options['table']
-    prime_script = "#{APPSCALE_HOME}/AppDB/#{table}/prime_#{table}.py"
+    prime_script = "#{APPSCALE_HOME}/AppDB/#{table}_env/prime_#{table}.py"
     retries = 10
     loop {
       Djinn.log_run("APPSCALE_HOME='#{APPSCALE_HOME}' MASTER_IP='localhost' " +
@@ -4146,7 +4144,7 @@ class Djinn
     HelperFunctions.shell("rsync #{options} #{server}/* root@#{ip}:#{server}")
     HelperFunctions.shell("rsync #{options} #{server_java}/* root@#{ip}:#{server_java}")
     HelperFunctions.shell("rsync #{options} #{loadbalancer}/* root@#{ip}:#{loadbalancer}")
-    HelperFunctions.shell("rsync #{options} --exclude='logs/*' --exclude='cassandra/cassandra/*' #{appdb}/* root@#{ip}:#{appdb}")
+    HelperFunctions.shell("rsync #{options} --exclude='logs/*' #{appdb}/* root@#{ip}:#{appdb}")
     HelperFunctions.shell("rsync #{options} #{app_manager}/* root@#{ip}:#{app_manager}")
     HelperFunctions.shell("rsync #{options} #{iaas_manager}/* root@#{ip}:#{iaas_manager}")
     HelperFunctions.shell("rsync #{options} #{xmpp_receiver}/* root@#{ip}:#{xmpp_receiver}")
@@ -4166,7 +4164,7 @@ class Djinn
     table = @options['table']
     # require db_file
     begin
-      require "#{APPSCALE_HOME}/AppDB/#{table}/#{table}_helper"
+      require "#{table}_helper"
     rescue => e
       backtrace = e.backtrace.join("\n")
       HelperFunctions.log_and_crash("Unable to find #{table} helper." +
