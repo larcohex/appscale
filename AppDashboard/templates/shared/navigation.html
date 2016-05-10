@@ -47,10 +47,10 @@
                             {% if apps_user_is_admin_on or is_user_cloud_admin %}
                               <li align="center" class="tab"><a class="btn btn-info" href="/apps">App Console</a></li>
                               <li align="center" class="tab"><a class="btn btn-info" href="/logs">View Logs</a></li>
-                              <li align="center" class="tab"><a class="btn btn-info" href="{{ flower_url }}">TaskQueue Monitor</a></li>
+                              <li align="center" class="tab"><a class="btn btn-info" onclick="goToTaskQueue()">TaskQueue Monitor</a></li>
                             {% endif %}
                             {% if is_user_cloud_admin %}
-                              <li align="center" class="tab"><a class="btn btn-info" href="{{ monit_url }}">Monit Dashboard</a></li>
+                              <li align="center" class="tab"><a class="btn btn-info" onclick = "goToMonit()">Monit Dashboard</a></li>
                               <li align="center" class="tab"><a class="btn btn-info" href="/authorize">Manage Users</a></li>
                             {% endif %}
                             {% if can_upload_apps %}
@@ -63,6 +63,28 @@
 
         </div><!-- End #sidebar -->
         <script>
+            function goToTaskQueue() {
+                var current_link = window.location.href;
+                if (current_link.length > 6) {
+                  if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
+                    current_link = current_link.substring (0, current_link.length - 6);
+                  }
+                }
+                current_link = current_link.substring (12, current_link.length);
+                var new_link = "https://5555" + current_link;
+                window.location = new_link;
+            }
+            function goToMonit() {
+                var current_link = window.location.href;
+                if (current_link.length > 6) {
+                  if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
+                    current_link = current_link.substring (0, current_link.length - 6);
+                  }
+                }
+                current_link = current_link.substring (12, current_link.length);
+                var new_link = "https://2812" + current_link;
+                window.location = new_link;
+            }
             $(document).ready(function() {
                 // Insert a new style that extends the height of the header to
                 // encompass the sidebar when .resBtn is clicked.
