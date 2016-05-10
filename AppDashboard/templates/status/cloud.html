@@ -60,8 +60,7 @@
                                         {% for app_name in apps.keys()|sort %}
                                             <li><span class="icon16 icomoon-icon-arrow-right-2"></span>
                                               {% if apps[app_name] %}
-                                                <a class="btn" href="{{ apps[app_name][0] }}" target="_blank">{{ app_name }}</a>
-                                                <a class="btn" href="{{ apps[app_name][1] }}" target="_blank">https-{{ app_name }}</a>
+                                                <a class="btn" href>{{ app_name }}</a>
                                               {% else %}
                                                 <a class="btn disabled">{{ app_name }} (loading)</a>
                                               {% endif %}
@@ -96,8 +95,16 @@
                                            if (apps[key] == null) {
                                              apps_html += '<a class="btn disabled">' + key + ' (loading)</a>';
                                            } else {
-                                             apps_html += '<a class="btn" href="' + apps[key][0] + '" target="_blank">' + key + '</a> ';
-                                             apps_html += '<a class="btn" href="' + apps[key][1] + '" target="_blank">' +'https-'+ key + '</a>';
+                                             var port = apps[key][0].substring (7, 11);
+                                             var current_link = window.location.href;
+                                             if (current_link.length > 6) {
+                                               if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
+                                                 current_link = current_link.substring (0, current_link.length - 6);
+                                               }
+                                             }
+                                             current_link = current_link.substring (12, current_link.length);
+                                             var new_link = "https://" + port + current_link;
+                                             apps_html += '<a class="btn" href="' + new_link + '" target="_blank">' + key + '</a> ';
                                            }
                                            apps_html += '</li>';
                                          }
@@ -105,7 +112,7 @@
                                        apps_html += '</ul>'
                                        $('#application_info').html(apps_html);
                                      });
-                                   }, 10000);
+                                   }, 1000);
                                  </script>
                                 </div>
                               </div>
