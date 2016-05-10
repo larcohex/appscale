@@ -65,25 +65,32 @@
         <script>
             function goToTaskQueue() {
                 var current_link = window.location.href;
-                if (current_link.length > 6) {
-                  if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
-                    current_link = current_link.substring (0, current_link.length - 6);
+                var index = 0;
+                for (var i = 8; i < current_link.length; ++i) {
+                  if (current_link.charAt (i) === '/') {
+                     index = i;
+                     break;
                   }
                 }
-                current_link = current_link.substring (12, current_link.length);
-                var new_link = "https://5555" + current_link;
-                window.location = new_link;
+                if (index !== 0) {
+                  current_link = current_link.substring (12, index);
+                  var new_link = "https://5555" + current_link;
+                  window.location = new_link;
+                }
             }
             function goToMonit() {
                 var current_link = window.location.href;
-                if (current_link.length > 6) {
-                  if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
-                    current_link = current_link.substring (0, current_link.length - 6);
+                for (var i = 8; i < current_link.length; ++i) {
+                  if (current_link.charAt (i) === '/') {
+                     index = i;
+                     break;
                   }
                 }
-                current_link = current_link.substring (12, current_link.length);
-                var new_link = "https://2812" + current_link;
-                window.location = new_link;
+                if (index !== 0) {
+                  current_link = current_link.substring (12, index);
+                  var new_link = "https://2812" + current_link;
+                  window.location = new_link;
+                }
             }
             $(document).ready(function() {
                 // Insert a new style that extends the height of the header to
