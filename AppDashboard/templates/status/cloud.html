@@ -95,7 +95,13 @@
                                            if (apps[key] == null) {
                                              apps_html += '<a class="btn disabled">' + key + ' (loading)</a>';
                                            } else {
-                                             var port = apps[key][0].substring (7, 11);
+                                             var port = "";
+                                             if (apps[key][0].charAt (apps[key][0].length - 5) === ':') {
+                                               port = apps[key][0].substring (apps[key][0].length - 4, apps[key][0].length);
+                                             }
+                                             else {
+                                               port = apps[key][0].substring (7, 11);
+                                             }
                                              var current_link = window.location.href;
                                              if (current_link.length > 6) {
                                                if (current_link.substring (current_link.length - 6, current_link.length) === "status") {
